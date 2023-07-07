@@ -1,0 +1,9 @@
+<h1><%= @job_category.name %> related jobs</h1>
+
+
+<%= render 'shared/job_card', my_jobs: @job_category.jobs %>
+
+
+<% if @job_category.jobs.present?%>
+ <%= paginate @jobs %>
+<% end %>

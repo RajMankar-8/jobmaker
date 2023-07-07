@@ -1,0 +1,42 @@
+<h1 class="mb-2">Welcome</h1>
+
+<p><span class="font-weight-bold"> Dear - </span><span class="btn btn-link"><%= @user.email%></span></p> 
+<p>
+  Thanks for posting job on Jobmaker. We are one of the fastest growing platform that provide different types of jobs and convinient results.
+</p>
+<p>In case of any queries, please contact us here.</p>
+<p class="h5 font-weight-bold">Team Jobmaker</p>
+<p>Here are the details of your created job</p>
+
+<div class="container">
+  <div class="row mb-5 p-2 ">
+    <div class="col-4 ">
+      <div class="card shadow mb-5">
+        <% if @job.company_image.attached? %>
+         <%= image_tag @job.company_image, class:"img-fluid " %>
+        <% else %>
+         <%= image_tag("https://images.unsplash.com/photo-1574958269340-fa927503f3dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1948&q=80A", class:"img-fluid ")%>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"> 
+           <li><%= @job.title %></li>
+         </h5>
+       </h5>
+       <p class="card-text">
+        <li class="mb-2"><span class="h5">link_to_apply - </span><%= @job.link_to_apply %></li>
+        <li class="mb-2"><span class="h5">job_post_id - </span><%= @job.job_post_id %></li>
+        <li class="mb-2"><span class="h5">Job Category - </span><%= @job.job_category.name %></li>
+        <li class="mb-2"><span class="h5">Employment Type - </span><%= @job.employment_type %></li>
+        <li class="mb-2"><span class="h5">Qualification - </span><%= @job.qualification %></li>
+        <li class="mb-2"><span class="h5">Location - </span><%= @job.location_type %></li>
+        <li class="mb-2"><span class="h5">Salary - </span><%= @job.salary %></li>
+        <li class="mb-2"><span class="h5">Max. Positions - </span><%= @job.max_positions %></li>
+        <li class="mb-2"><span class="h5">Description - </span><%= @job.description %></li>
+      </p>
+      <%= link_to 'Edit', edit_users_user_url(@job),class:"btn btn-secondary" %>
+      <%= link_to 'Show', admin_job_url(@job), data: {turbo_method: :delete, turbo_confirm:"Are you sure ?"}, class:"btn btn-danger" %>
+    </div>
+  </div>
+</div>
+
+<p>IMPORTANT: Please do not reply to this message or mail address. For any queries, please contact us at <span class="btn btn-link">jobmaker@gmail.com</span>.</p>

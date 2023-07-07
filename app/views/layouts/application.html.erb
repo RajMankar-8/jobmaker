@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jobmaker</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "responsive", "data-turbo-track": "reload" %>
+
+<script src="https://kit.fontawesome.com/d37da6522f.js" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+ /* .container-fluid {
+    border: 2px solid blue ;
+  }
+  .container {
+    border: 2px solid red ;
+  }
+  .row {
+    
+    border: 2px solid green ;
+  }
+  .col{
+    border: 2px solid yellow ;
+  }*/
+</style>
+<body>
+
+  <% if @jobs = true %>
+    <%= render 'shared/header' %>
+  <% end %>
+ <!--  <span class="notice"><%#= notice %></span>
+  <span class="alert"><%#= alert %></span> -->
+  <%= yield %>
+</div>
+</body>
+</html>

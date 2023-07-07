@@ -1,0 +1,36 @@
+ <% my_jobs.each do |job| %>
+ <% unless job.archived? %>
+ <div class="container mb-3">
+  <div class="row mb-5 p-2 ">
+    <div class="container">
+      <div class="card" >
+        <div class="row">
+          <div class="col-md-2 ">
+           <% if job.company_image.attached? %>
+           <%= image_tag job.company_image, class:"img-fluid rounded-5 ms-3 mt-1"%>
+           <% else %>
+           <%= image_tag("https://images.unsplash.com/photo-1574958269340-fa927503f3dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1948&q=80A", class:"img-fluid")%>
+           <% end %>
+         </div>
+         <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= job.title%></h5>
+            <p class="card-text"><span style="color:black;"><%= job.employment_type %>/<%= job.location_type %></span></p>
+            <p class="card-text"><small class="text-muted "><%= link_to "more details", admin_job_path(job), class:"text-decoration-none"%></small></p>
+          </div>
+        </div>
+        <div class="col col-md-2">
+          <p><%#= job.sss%></p>    
+          <p><%#= job.created_at.strftime("%B")%></p>  
+          <p><%#= job.created_at.to_date%></p>   
+          <%#= Date.today.month%>
+          <%#= job.created_at.month%>
+          <p class="fw-bold mt-3 text-center"><%= job.date_status %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>
+

@@ -1,0 +1,65 @@
+
+<div class="top-banner container-fluid">
+  <div class="row">
+    <div class="col col-xl-6 col-sm-12">
+      <div class="container-fluid mb-5 mt-5">
+        <div class="row mb-5 ">
+          <div class="col col-12 "> 
+            <div class="col col-xl-8 col-sm-12 ms-5 ">
+              <span class="display-3  fw-bolder  lh-base">Find your job &</span><br>
+              <span class=" display-3  fw-bolder lh-base">make sure goal.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col col-12"> 
+          <div class="col col-xl-8 col-sm-12 ms-5 ">
+            <span class="fw-bold h4 ms-3">Explore all the most exciting job roles based</span><br>
+            <span class="fw-bold h4 ms-3">on your interest and study major.</span>
+          </div>
+        </div>
+      </div>
+      <div class="container  rounded-3 p-0" style="background-color: white;" >
+        <div class="row justify-content-center">
+          <div class="col r col-4 rounded-2 p-4">
+            <%= search_form_for @q, url: :admin_jobs do |form| %>
+            <div class="row gy-1">
+              <div class="col col-5 ">
+                <span class="h5 fw-bold ">Location</span>
+              </div>
+              <div class="col col-12">
+                <%= form.text_field :location_type_cont, class:"form-control form-control-lg align-self-center" ,placeholder:"Search Location" %>
+              </div>
+            </div>
+          </div>
+          <div class="col r col-4 p-4">
+            <div class="row gy-1">
+              <div class="col col-4 ">
+                <span class="h5 fw-bold" >Type</span>
+              </div>
+              <div class="col col-12">
+                <%= form.text_field :job_category_name_cont, class:"form-control form-control-lg align-self-center" ,placeholder:"Search Jobs" %>
+              </div>
+            </div>
+          </div>
+          <div class="col r col-2 rounded-2 p-4  me-5">
+            <div class="row mt-2">
+              <%= form.submit class: "btn mt-2 me-5 fw-bold mt-4" ,style:"background-color:#FF6B2D; color:white; " %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <div class="col col-xl-6 col-sm-12 gy-sm-5 gy-md-0">
+      <%= image_tag "lap-2.png", class: "img-fluid w-100 h-100" %>
+    </div>
+  </div>
+</div>
+
+<p class="fw-bold mt-5 " align="center">
+  <span class="px-5 py-2 rounded-3 popup" >Here are the latest Top 10 new jobs </span>
+</p>
+<%= render 'shared/job_card', my_jobs: @latest_jobs %>
+<%= paginate @jobs %>

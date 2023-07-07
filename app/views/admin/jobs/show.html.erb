@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div class="row justify-content-between">
+    <div class="col col-3 ">
+     <div class="job-title "><%= @job.title %></div>
+   </div>
+   <div class="col col-3">
+     <p class="fw-bold">
+      <%= link_to "See more All Related Jobs",job_category_path(@job.job_category), style:"color:#F1504A;", class:"text-decoration-none" %>
+      <i class=" ms-2 fa-solid fa-arrow-right" style="background-color:#F1504A; color:white; padding:2px;"></i></p>
+    </div>
+  </div>
+  <div class="job-info">
+    <p class="d-inline-block"><strong>Company:</strong> ABC Technologies </p>
+    <p><strong>Location:</strong>  <%= @job.location_type %></p>
+    <p><strong>Job Type:</strong>  <%= @job.employment_type %></p>
+    <p><strong>Salary:</strong>  <%= @job.salary %></p>
+    <p><strong>Qualification:</strong>  <%= @job.qualification %></p>
+    <p><strong>Maximum position:</strong>  <%= @job.max_positions %></p>
+    <p><strong>link_to_apply:</strong><span class="btn btn-link"><%= link_to @job.link_to_apply, @job.link_to_apply, :target => "_blank" %></span></p>
+  </div>
+
+  <div class="job-description">
+    <h2>Job Description</h2>
+    <p><%= @job.description %> </p>
+  </div>
+
+
+  <div class="apply-button mt-4">
+    <a href="#" class="btn text-white btn-lg rounded-0" style="background-color:#F03E3E;">Apply for this position</a>
+  </div>
+</div>

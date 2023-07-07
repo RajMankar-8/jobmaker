@@ -1,0 +1,67 @@
+  
+<nav class="navbar navbar-expand-lg sticky-top mb-5 shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <%= link_to root_path do %>
+      <%= image_tag "download.jpg", class: "header-img" %>
+      <% end %></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-lg-0">
+         <li class="nav-item ms-3">
+           <% if user_signed_in? %>
+           <%= link_to 'Post a job', new_admin_job_path , class:"text-decoration-none btn rounded-0 fw-bold nav-link px-3 ",style:"background-color:#F03E3E; color:white;" %>
+           <% else %>
+           <%= link_to 'Post a job', new_user_session_path , class:"text-decoration-none btn px-3 fw-bold rounded-0 nav-link ",style:"background-color:#F03E3E; color:white;" %>
+           <% end %>
+         </li>
+         <li class="nav-item ms-3">
+           <%= link_to 'All Jobs', admin_jobs_path, class:"text-decoration-none nav-link a" %>
+         </li>
+         <li class="nav-item ms-3 dropdown">
+          <a class="nav-link a dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Jobcategories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% @job_categorys.each do |job_category|%>
+            <li>
+              <a class="dropdown-item" href=""><%= link_to job_category.name, job_category_path(job_category),:target => "_blank", class:"text-decoration-none dropdown-item a" %>
+              </a>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="nav-item ms-3">
+          <% if user_signed_in? %>
+          <%= link_to 'Sign Out', destroy_user_session_path , data: {turbo_method: :delete}, class:"text-decoration-none nav-link a" %>
+        </li>
+        <li class="nav-item ms-3">
+          <%= link_to 'My Jobs',  users_users_path , class:"text-decoration-none nav-link a" %>
+        </li>
+        <% else %>
+        <li class="nav-item ms-3">
+          <%= link_to 'Sign In', new_user_session_path , class:"text-decoration-none nav-link a " %>
+          <% end %>
+        </li>
+        <li class="nav-item ms-5">
+         <% if @q %>
+         <div class="row">
+           <div class="col col-9 p-0">
+             <%= search_form_for @q, url: :admin_jobs do |form| %>
+             <%= form.text_field :job_category_name_cont, class:"form-control form-control-lg pe-5 mb-2" ,placeholder:"Search Jobs " %>
+           </div>
+           <div class="col col-3  ">
+             <%= form.submit class: "btn me-3 mt-1 fw-bold", style:"background-color:#27ae60; color:white;" %>
+             <% end %>
+           </div>
+         </div>
+         <% end %>
+       </li>
+     </ul>
+   </div>
+ </div>
+</nav>
+
+

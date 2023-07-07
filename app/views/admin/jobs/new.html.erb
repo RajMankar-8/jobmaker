@@ -1,0 +1,124 @@
+<!-- Form for Job Input  -->
+
+<div class="container w-50 border border-1 shadow " >
+  <div class="row p-5 justify-content-center ">
+    <div>
+      <%= form_with model: [:admin, @job] do |form| %>
+
+
+      <%= form.hidden_field :job_post_id, value: current_user.id %>
+      <p class="text-danger">* ( All the Following field are required to fill )</p>
+      
+      <%= form.select :status, ['Public','Archived'], selected:'Public' %>
+
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.label :title , class:"form-label" %><br>
+        <%= form.text_field :title , class:"form-control p-2" %>
+        <% @job.errors.full_messages_for(:title).each do |message| %>
+        <div class="text-danger">
+          <%= message %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.label :Job_category_id, class:"form-label" %><br>
+        <%= form.select :job_category_id, options_for_select(JobCategory.pluck(:name, :id)), {prompt: 'Select Jobcategory'}, { class: 'form-select form-select-lg rounded-0'} %>
+        <% @job.errors.full_messages_for(:job_category_id).each do |message| %>
+        <div class="text-danger">
+          <%= message %>
+        </div>
+        <% end %>
+      </div>
+
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.label :Employment_type, class:"form-label" %><br>
+        <%= form.select :employment_type, options_for_select(Job::EMPLOYMENT_TYPE),{prompt: 'Select Employment_type'},{ class: 'form-control p-2 form-select form-select-lg rounded-0'}%>
+        <% @job.errors.full_messages_for(:employment_type).each do |message| %>
+        <div class="text-danger">
+          <%= message %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.label :qualification, class:"form-label" %><br>
+        <%= form.select :qualification, options_for_select(Job::QUALIFICATION),{prompt: 'Select qualification'},{ class: 'form-control p-2 form-select form-select-lg rounded-0'}%>
+        <% @job.errors.full_messages_for(:qualification).each do |message| %>
+        <div class="text-danger">
+          <%= message %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.label :location_type, class:"form-label" %><br>
+        <%= form.select :location_type, options_for_select(Job::LOCATION_TYPE),{prompt: 'Select Location'},{ class: 'form-control p-2 form-select form-select-lg rounded-0'}%>
+        <% @job.errors.full_messages_for(:location_type).each do |message| %>
+        <div class="text-danger">
+          <%= message %>
+        </div>
+        <% end %>
+      </div>
+
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.label :salary, class:"form-label" %><br>
+        <%= form.select :salary, options_for_select(Job::SALARY),{prompt: 'Select Salary Range'},{ class: 'form-control p-2 form-select form-select-lg rounded-0'}%>
+        <% @job.errors.full_messages_for(:salary).each do |message| %>
+        <div class="text-danger">
+          <%= message %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.label :link_to_apply, class:"form-label" %><br>
+        <%= form.text_field :link_to_apply, class:"form-control p-2"%>
+        <% @job.errors.full_messages_for(:link_to_apply).each do |message| %>
+        <div class="text-danger">
+          <%= message %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.label :max_positions, class:"form-label" %><br>
+        <%= form.text_field :max_positions, class:"form-control p-2" %>
+        <% @job.errors.full_messages_for(:max_positions).each do |message| %>
+        <div class="text-danger">
+          <%= message %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.label :Upload_company_image , class:"form-label" %><br>
+        <%= form.file_field :company_image  %>
+        <% @job.errors.full_messages_for(:company_image).each do |message| %>
+        <div class="text-danger">
+          <%= message %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.label :description, class:"form-label" %><br>
+        <%= form.text_area :description,:cols => 10, :rows => 5, class:"form-control p-2" %>
+        <% @job.errors.full_messages_for(:description).each do |message| %>
+        <div class="text-danger">
+          <%= message %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="pt-2 col col-12 mb-3 form-control-lg">
+        <%= form.submit class:'btn btn-danger btn-lg' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- Form for Job Input -->
